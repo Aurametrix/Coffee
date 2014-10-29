@@ -35,7 +35,30 @@ Array::toDict = (key) ->
   dict[obj[key]] = obj for obj in this when obj[key]?
   dict
 
+# mixin (class which contains a combination of methods from other classes)
+
+_.mixin toDict: (arr, key) ->
+    throw new Error('_.toDict takes an Array') unless _.isArray arr
+    _.reduce arr, ((dict, obj) -> dict[ obj[key] ] = obj if obj[key]?; return dict), {}
+catsDict = _.toDict(cats, 'name')
+catsDict["Sparkle"]
+# => { favoriteFood: "tuna", name: "Sparkle" }
+
+# string from array
+["one", "two", "three"].toString()
+# => 'one,two,three'
+
 # reverse an array
 
 ["one", "two", "three"].reverse()
 # => ["three", "two", "one"]
+
+# two ways to define a range of array elements in CoffeeScript:
+
+# inclusive
+myArray = [1..10]
+# => [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+
+# exclusive
+myArray = [1...10]
+# => [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
