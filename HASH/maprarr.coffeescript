@@ -1,0 +1,4 @@
+names = ['Chris', 'Tracy', 'Jason', 'Jennifer', 'Maxx']
+values = [3, 63, 56, 4, 65, 3, 555, 9]
+
+nameLengths = (name.length for name in names)
